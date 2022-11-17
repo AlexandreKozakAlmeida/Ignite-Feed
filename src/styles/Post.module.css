@@ -126,3 +126,7 @@
     transition: .5s;
     background: var(--green-500);
  }
+
+ .commentList {
+    margin-top: 2rem;
+ }
