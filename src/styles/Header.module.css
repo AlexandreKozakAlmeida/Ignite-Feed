@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    background-color: var(--gray-800);
+    height: 80px;
+    width: 100vw;
+    color: #ffffff;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-500);
+}
