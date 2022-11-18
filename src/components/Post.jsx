@@ -1,39 +1,43 @@
 import styles from '../styles/Post.module.css';
+import { Avatar } from './Avatar';
 import { Comments } from './Comments';
+import { format, formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
-export function Post() {
+export function Post({content, publishedAt, author}){
+
+   const publishedDatedFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+    locale: ptBR
+   })
+
+   const publishedDateRealtiveToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true
+   })
+   
     return (
         <article className={styles.post}>
            <header>
                 <div className={styles.author}>
-                    <img className={styles.avatar} src="https://avatars.githubusercontent.com/u/98601344?v=4" />
+                    <Avatar src={author.avatarUrl} />
 
                     <div className={styles.authorInfo}>
-                        <strong> Alexandre </strong>
-                        <span> Web Developer </span> 
+                        <strong> {author.name} </strong>
+                        <span>{author.role} </span> 
                     </div>
                 </div>
 
-                <time title='17 de novembro às 17:27' dateTime='2022-11-17 17:26:21'>Publicado há 1h </time>
+                <time title={publishedDatedFormatted} dateTime={publishedAt.toISOString()}> {publishedDateRealtiveToNow} </time>
            </header>
 
            <div className={styles.content}>
-                <p>
-                    Fala galera
-                </p>
-                <p>
-                    Acabei de subir mais um projeto no meu portifa. É um projeto que eu fiz no NLW Return, evento da rocketseat!!
-                </p>
-                <p>
-                   <a href="#">
-                        alexandrekozakalmeida.github.io/doctor-care
-                   </a>
-                </p>
-                <p className={styles.hashtags}>
-                   <a href="#"> #novoprojeto </a> 
-                   <a href="#"> #nlw </a>
-                   <a href="#"> #rocketseat </a>  
-                </p>
+               {content.map(line => {
+                if (line.type === 'paragraph') {
+                    return <p>{line.content}</p>
+                } else if (line.type === 'link') {
+                    return <p><a href="#">{line.content} </a> </p>
+                }
+               })}
            </div>
 
            <form className={styles.commentForm}>
