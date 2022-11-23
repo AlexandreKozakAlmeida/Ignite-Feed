@@ -24,14 +24,14 @@ function App() {
     {
       id: 2,
       author: {
-        avatarUrl: 'https://live.staticflickr.com/4221/34809333590_5487c0c629_b.jpg',
-        name: 'Anna',
+        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuE2gcLbyQCAClJVDfmQlP9pygX49wQppCFul57ULA8HDMEPGJjsZ4Avj2KUOqBUM-v8c&usqp=CAU',
+        name: 'André',
         role: 'Web Developer backend'
       },
       content: [
         { type: 'paragraph', content: 'Fala galera'}, 
         {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que eu fiz no NLW Return, evento da rocketseat!!'},
-        { type: 'link', content:'anna.github.io/doctor-care' },
+        { type: 'link', content:'andre.github.io/doctor-care' },
       ],
       publishedAt: new Date('2022-11-18 15:45:00'),
     },
